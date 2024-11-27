@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/emp")
@@ -31,12 +32,17 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteValue(@PathVariable int id) {
-        if (emlpoyeeService.delete(id)) {
-            return "Deleted Successfully";
-        } else {
-            return "Information not Found";
-        }
+//    public String deleteValue(@PathVariable int id) {
+//        if (emlpoyeeService.delete(id)) {
+//            return "Deleted Successfully";
+//        } else {
+//            return "Information not Found";
+//        }
+//    }
+
+    public Map<String,Boolean> deleteById(@PathVariable int id) {
+        emlpoyeeService.delete(id);
+        return Map.of("Success",true);
     }
 
     @GetMapping("/find/{name}")

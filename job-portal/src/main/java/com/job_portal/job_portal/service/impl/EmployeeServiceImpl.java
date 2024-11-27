@@ -3,7 +3,6 @@ package com.job_portal.job_portal.service.impl;
 import com.job_portal.job_portal.model.Employee;
 import com.job_portal.job_portal.repository.EmployeeRepository;
 import com.job_portal.job_portal.service.EmployeeService;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,23 +49,37 @@ public class EmployeeServiceImpl implements EmployeeService
         return null;
     }
 
-    @Override
-    public Boolean delete(int id) {
-        Optional<Employee> optionalObject = employeeRepository.findById(id);
-        if(optionalObject.isEmpty())
-        {
-            Employee employee1 = optionalObject.orElseThrow((()->new RuntimeException("User not found")));
-            System.out.println("Error");
-            return false;
-        }
-        else
-        {
-            employeeRepository.deleteById(id);
-            return true;
-        }
+//    @Override
+//    public Boolean delete(int id) {
+//        Optional<Employee> optionalObject = employeeRepository.findById(id);
+//        if(optionalObject.isEmpty())
+//        {
+//            Employee employee1 = optionalObject.orElseThrow((()->new RuntimeException("User not found")));
+//            System.out.println("Error");
+//            return false;
+//        }
+//        else
+//        {
+//            employeeRepository.deleteById(id);
+//            return true;
+//        }
+//
+//
+//    }
 
+    @Override
+    public void delete(int id) {
+        getById(id);
+        employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public void getById(int id) {
+        Optional<Employee> optionalUser = employeeRepository.findById(id);
+        optionalUser.orElseThrow((() -> new RuntimeException("User not Found")));
 
     }
+
 
     @Override
     public Employee findByUsername(String username) {

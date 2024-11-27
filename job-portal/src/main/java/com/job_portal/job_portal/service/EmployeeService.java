@@ -9,7 +9,12 @@ public interface EmployeeService
     List<Employee> getAll();
     Employee add(Employee employee);
     Employee update(Employee employee, int id);
-    Boolean delete(int id);
+    void delete(int id);
+
+
+
+    void getById(int id);
+
     Employee findByUsername(String username);
     List<Employee> findByName(String name);
 }

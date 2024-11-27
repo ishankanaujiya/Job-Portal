@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController
@@ -16,13 +18,18 @@ public class AuthController
     private AuthService authService;
 
     @PostMapping("/add")
-    public String checkLogin(@RequestBody LoginDto loginDto)
-    {
-        if(authService.login(loginDto.username(), loginDto.password()))
-        {
-            return "Correct";
-        }
-        return "incorrect";
-//       return Map.of("Success",isSuccess);
+//    public String checkLogin(@RequestBody LoginDto loginDto)
+//    {
+//        if(authService.login(loginDto.username(), loginDto.password()))
+//        {
+//            return "Correct";
+//        }
+//        return "incorrect";
+////       return Map.of("Success",isSuccess);
+//    }
+    public Map<String,Boolean> login (@RequestBody LoginDto loginDto){
+
+        boolean isSuccess = authService.login(loginDto.username(), loginDto.password());
+        return Map.of("success",isSuccess);
     }
 }
