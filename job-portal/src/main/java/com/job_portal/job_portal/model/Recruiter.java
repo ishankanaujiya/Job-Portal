@@ -10,10 +10,18 @@ public class Recruiter
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generates the primary key
     private int id;
 
+    @Column(nullable = false)
     private String companyName;
+
+    @Column(unique = true, nullable = false)
     private String email;
+
     private String websiteUrl;
+
+    @Column(unique = true, nullable = false)
     private String username;
+
+    @Column(nullable = false)
     private String password;
 
     public int getId() {
