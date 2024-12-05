@@ -13,7 +13,7 @@ public class Admin
     @Column(unique = true, nullable = false)
     private String username;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String password;
 
     public int getId() {
