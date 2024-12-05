@@ -9,7 +9,11 @@ public class Admin
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generates the primary key
     private int id;
+
+    @Column(unique = true, nullable = false)
     private String username;
+
+    @Column(nullable = false)
     private String password;
 
     public int getId() {
