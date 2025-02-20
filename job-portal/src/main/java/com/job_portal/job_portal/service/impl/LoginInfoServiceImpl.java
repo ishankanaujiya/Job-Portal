@@ -11,6 +11,9 @@ import com.job_portal.job_portal.service.LoginInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class LoginInfoServiceImpl implements LoginInfoService
 {
@@ -21,5 +24,23 @@ public class LoginInfoServiceImpl implements LoginInfoService
     @Override
     public LoginInfo add(LoginInfo loginInfo) {
         return loginInfoRepository.save(loginInfo);
+    }
+
+    @Override
+    public void delete(int id) {
+        getById(id);
+        loginInfoRepository.deleteById(id);
+    }
+
+    @Override
+    public void getById(int id) {
+        Optional<LoginInfo> optionalUser = loginInfoRepository.findById(id);
+        optionalUser.orElseThrow((() -> new RuntimeException("User not Found")));
+
+    }
+
+    @Override
+    public List<LoginInfo> getAll() {
+        return loginInfoRepository.findAll();
     }
 }

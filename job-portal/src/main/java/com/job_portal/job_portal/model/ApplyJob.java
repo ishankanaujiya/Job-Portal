@@ -24,6 +24,8 @@ public class ApplyJob
 
     private String position;
 
+    private String website;
+
     public String getFirstName() {
         return firstName;
     }
@@ -69,5 +71,13 @@ public class ApplyJob
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 }
