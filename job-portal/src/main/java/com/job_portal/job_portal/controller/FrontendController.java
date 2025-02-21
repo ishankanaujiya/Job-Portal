@@ -2,6 +2,7 @@ package com.job_portal.job_portal.controller;
 
 import com.job_portal.job_portal.model.AddJob;
 import com.job_portal.job_portal.model.ApplyJob;
+import com.job_portal.job_portal.model.Employee;
 import com.job_portal.job_portal.model.Frontend;
 import com.job_portal.job_portal.service.ApplyJobService;
 import com.job_portal.job_portal.service.FrontendService;
@@ -42,5 +43,10 @@ public class FrontendController
     public Map<String,Boolean> deleteById(@PathVariable int id) {
         frontendService.delete(id);
         return Map.of("Success",true);
+    }
+
+    @PutMapping("/update/{id}")
+    public Frontend updateValue(@RequestBody Frontend frontend, @PathVariable int id) {
+        return frontendService.update(frontend, id);
     }
 }

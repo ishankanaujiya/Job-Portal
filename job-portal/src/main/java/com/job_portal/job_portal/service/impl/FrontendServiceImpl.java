@@ -40,4 +40,22 @@ public class FrontendServiceImpl implements FrontendService
         optionalUser.orElseThrow((() -> new RuntimeException("User not Found")));
 
     }
+
+    @Override
+    public Frontend update(Frontend frontend, int id) {
+        Optional<Frontend> optionalObject = frontendRepository.findById(id);
+        System.out.println(id);
+        if(optionalObject.isEmpty())
+        {
+            Frontend frontend1 = optionalObject.orElseThrow((()->new RuntimeException("User not found")));
+            System.out.println("Error");
+        }
+        else
+        {
+            frontend.setId(id);
+            return frontendRepository.save(frontend);
+        }
+
+        return null;
+    }
 }

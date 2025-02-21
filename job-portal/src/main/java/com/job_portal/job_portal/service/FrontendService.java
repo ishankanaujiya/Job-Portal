@@ -11,7 +11,7 @@ public interface FrontendService
 
 
 
-
+    Frontend update(Frontend frontend, int id);
     void delete(int id);
     void getById(int id);
 
