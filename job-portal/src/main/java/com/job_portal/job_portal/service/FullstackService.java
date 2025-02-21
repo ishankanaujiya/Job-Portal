@@ -9,4 +9,8 @@ public interface FullstackService
     Fullstack add(Fullstack fullstack);
     List<Fullstack> getAll();
 
+
+    void delete(int id);
+    void getById(int id);
+
 }

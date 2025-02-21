@@ -9,4 +9,8 @@ public interface BackendService
     Backend add(Backend backend);
     List<Backend> getAll();
 
+
+    void delete(int id);
+    void getById(int id);
+
 }

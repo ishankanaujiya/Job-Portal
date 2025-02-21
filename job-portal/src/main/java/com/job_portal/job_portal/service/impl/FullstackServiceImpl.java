@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FullstackServiceImpl implements FullstackService
@@ -22,5 +23,18 @@ public class FullstackServiceImpl implements FullstackService
     @Override
     public List<Fullstack> getAll() {
         return fullstackRepository.findAll();
+    }
+
+    @Override
+    public void delete(int id) {
+        getById(id);
+        fullstackRepository.deleteById(id);
+    }
+
+    @Override
+    public void getById(int id) {
+        Optional<Fullstack> optionalUser = fullstackRepository.findById(id);
+        optionalUser.orElseThrow((() -> new RuntimeException("User not Found")));
+
     }
 }

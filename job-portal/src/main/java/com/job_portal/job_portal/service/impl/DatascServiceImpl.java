@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DatascServiceImpl implements DatascService
@@ -22,5 +23,18 @@ public class DatascServiceImpl implements DatascService
     @Override
     public List<Datasc> getAll() {
         return datascRepository.findAll();
+    }
+
+    @Override
+    public void delete(int id) {
+        getById(id);
+        datascRepository.deleteById(id);
+    }
+
+    @Override
+    public void getById(int id) {
+        Optional<Datasc> optionalUser = datascRepository.findById(id);
+        optionalUser.orElseThrow((() -> new RuntimeException("User not Found")));
+
     }
 }

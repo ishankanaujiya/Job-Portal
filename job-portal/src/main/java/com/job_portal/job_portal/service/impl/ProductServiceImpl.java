@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService
@@ -22,5 +23,18 @@ public class ProductServiceImpl implements ProductService
     @Override
     public List<Product> getAll() {
         return productRepository.findAll();
+    }
+
+    @Override
+    public void delete(int id) {
+        getById(id);
+        productRepository.deleteById(id);
+    }
+
+    @Override
+    public void getById(int id) {
+        Optional<Product> optionalUser = productRepository.findById(id);
+        optionalUser.orElseThrow((() -> new RuntimeException("User not Found")));
+
     }
 }

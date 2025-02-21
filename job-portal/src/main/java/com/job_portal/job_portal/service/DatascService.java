@@ -9,4 +9,8 @@ public interface DatascService
     Datasc add(Datasc datasc);
     List<Datasc> getAll();
 
+
+    void delete(int id);
+    void getById(int id);
+
 }
