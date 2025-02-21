@@ -1,4 +1,12 @@
 package com.job_portal.job_portal.service;
 
-public interface BackendService {
+import com.job_portal.job_portal.model.*;
+
+import java.util.List;
+
+public interface BackendService
+{
+    Backend add(Backend backend);
+    List<Backend> getAll();
+
 }
