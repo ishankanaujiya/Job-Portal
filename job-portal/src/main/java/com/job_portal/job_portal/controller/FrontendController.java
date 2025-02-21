@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/frontendjob")
@@ -27,5 +28,19 @@ public class FrontendController
     public List<Frontend> getValue() {
         System.out.println("Written");
         return frontendService.getAll();
+    }
+
+    @DeleteMapping("/delete/{id}")
+//    public String deleteValue(@PathVariable int id) {
+//        if (emlpoyeeService.delete(id)) {
+//            return "Deleted Successfully";
+//        } else {
+//            return "Information not Found";
+//        }
+//    }
+
+    public Map<String,Boolean> deleteById(@PathVariable int id) {
+        frontendService.delete(id);
+        return Map.of("Success",true);
     }
 }

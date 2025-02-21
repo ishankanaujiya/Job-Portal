@@ -22,6 +22,13 @@ public class Frontend
 
     private String address;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCompanyname() {
         return companyname;

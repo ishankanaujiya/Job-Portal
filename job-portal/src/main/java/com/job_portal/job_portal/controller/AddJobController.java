@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/addjob")
@@ -28,5 +29,19 @@ public class AddJobController
     public List<AddJob> getValue() {
         System.out.println("Written");
         return addJobService.getAll();
+    }
+
+    @DeleteMapping("/delete/{id}")
+//    public String deleteValue(@PathVariable int id) {
+//        if (emlpoyeeService.delete(id)) {
+//            return "Deleted Successfully";
+//        } else {
+//            return "Information not Found";
+//        }
+//    }
+
+    public Map<String,Boolean> deleteById(@PathVariable int id) {
+        addJobService.delete(id);
+        return Map.of("Success",true);
     }
 }

@@ -8,5 +8,7 @@ public interface FrontendService
 {
     Frontend add(Frontend frontend);
     List<Frontend> getAll();
+    void delete(int id);
+    void getById(int id);
 
 }

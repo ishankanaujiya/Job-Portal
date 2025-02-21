@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AddJobServiceImpl implements AddJobService
@@ -27,5 +28,18 @@ public class AddJobServiceImpl implements AddJobService
     @Override
     public List<AddJob> getAll() {
         return addJobRepository.findAll();
+    }
+
+    @Override
+    public void delete(int id) {
+        getById(id);
+        addJobRepository.deleteById(id);
+    }
+
+    @Override
+    public void getById(int id) {
+        Optional<AddJob> optionalUser = addJobRepository.findById(id);
+        optionalUser.orElseThrow((() -> new RuntimeException("User not Found")));
+
     }
 }

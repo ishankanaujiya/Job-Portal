@@ -8,5 +8,7 @@ public interface AddJobService
 {
     AddJob add(AddJob addJob);
     List<AddJob> getAll();
+    void delete(int id);
+    void getById(int id);
 
 }
