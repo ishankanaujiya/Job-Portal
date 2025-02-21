@@ -15,7 +15,7 @@ public class ApplyJob
     private String lastName;
 
     @Column(unique = true, nullable = false)
-    private int phone;
+    private String phone;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -42,11 +42,11 @@ public class ApplyJob
         this.lastName = lastName;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
